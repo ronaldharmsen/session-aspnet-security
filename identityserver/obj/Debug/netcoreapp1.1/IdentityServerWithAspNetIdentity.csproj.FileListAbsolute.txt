@@ -1,0 +1,8 @@
+/Users/ronaldharmsen/dev/session-aspnetcore-security/identityserver/bin/Debug/netcoreapp1.1/IdentityServerWithAspNetIdentity.deps.json
+/Users/ronaldharmsen/dev/session-aspnetcore-security/identityserver/bin/Debug/netcoreapp1.1/IdentityServerWithAspNetIdentity.runtimeconfig.json
+/Users/ronaldharmsen/dev/session-aspnetcore-security/identityserver/bin/Debug/netcoreapp1.1/IdentityServerWithAspNetIdentity.runtimeconfig.dev.json
+/Users/ronaldharmsen/dev/session-aspnetcore-security/identityserver/bin/Debug/netcoreapp1.1/IdentityServerWithAspNetIdentity.dll
+/Users/ronaldharmsen/dev/session-aspnetcore-security/identityserver/bin/Debug/netcoreapp1.1/IdentityServerWithAspNetIdentity.pdb
+/Users/ronaldharmsen/dev/session-aspnetcore-security/identityserver/obj/Debug/netcoreapp1.1/IdentityServerWithAspNetIdentity.AssemblyInfo.cs
+/Users/ronaldharmsen/dev/session-aspnetcore-security/identityserver/obj/Debug/netcoreapp1.1/IdentityServerWithAspNetIdentity.dll
+/Users/ronaldharmsen/dev/session-aspnetcore-security/identityserver/obj/Debug/netcoreapp1.1/IdentityServerWithAspNetIdentity.pdb
