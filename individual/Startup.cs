@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Individual.Data;
 using Individual.Models;
 using Individual.Services;
+using Microsoft.AspNetCore.Identity;
 
 namespace Individual
 {
@@ -74,9 +75,18 @@ namespace Individual
             app.UseStaticFiles();
 
             app.UseIdentity();
-
+            
             // Add external authentication middleware below. To configure them please see https://go.microsoft.com/fwlink/?LinkID=532715
+            // app.UseGoogleAuthentication(new GoogleOptions{
+            //     AuthenticationScheme="Google",
+            //     DisplayName="Google",
+            //     SignInScheme = new IdentityCookieOptions().ExternalCookieAuthenticationScheme,
+            //     // ^ Use the cookie Google sets while authenticating
 
+            //     ClientId= Configuration["googleauth:clientid"],
+            //     ClientSecret= Configuration["googleauth:clientsecret"]
+            // });
+            
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
