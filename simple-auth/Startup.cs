@@ -60,11 +60,7 @@ namespace simple_auth
                 LogoutPath = "/auth/logout",
                 AccessDeniedPath = "/auth/accessdenied",
                 AutomaticAuthenticate = true,
-                AutomaticChallenge = true,
-                Events = new CookieAuthenticationEvents
-                {
-                    OnValidatePrincipal = MyCookieAuthValidator.ValidateAsync
-                }
+                AutomaticChallenge = true
             });
 
             app.UseMvc(routes =>
