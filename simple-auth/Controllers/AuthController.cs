@@ -12,6 +12,13 @@ namespace simple_auth.Controllers
 {
     public class AuthController : Controller
     {
+        IUserRepository repo;
+
+        public AuthController(IUserRepository repo)
+        {
+            this.repo = repo;
+        }
+
         // GET: /<controller>/
         public IActionResult Index()
         {
@@ -39,13 +46,21 @@ namespace simple_auth.Controllers
                 return View(model);
         }
 
+		public async Task<IActionResult> LogOut()
+		{
+			await HttpContext.Authentication.SignOutAsync("MyCookieAuthApp");
+			return Redirect("/");
+		}
+
         public IActionResult AccessDenied() {
             return View();
         }
 
-        public async Task<IActionResult> LogOut() {
-            await HttpContext.Authentication.SignOutAsync("MyCookieAuthApp");
+
+        public IActionResult Lock() {
+            repo.LockUser(User.Identity.Name);
             return Redirect("/");
         }
+
     }
 }

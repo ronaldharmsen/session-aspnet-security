@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using simple_auth.Auth;
 
 namespace simple_auth
 {
@@ -27,8 +29,10 @@ namespace simple_auth
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-			// Add framework services.
-			services.AddMvc();
+            services.AddSingleton<IUserRepository, UserRepo>();
+
+            // Add framework services.
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,17 +53,21 @@ namespace simple_auth
 
             app.UseStaticFiles();
 
-			app.UseCookieAuthentication(new CookieAuthenticationOptions
-			{
-				AuthenticationScheme = "MyCookieAuthApp",
-				LoginPath = "/auth/login",
-				LogoutPath = "/auth/logout",
-				AccessDeniedPath = "/auth/accessdenied",
-				AutomaticAuthenticate = true,
-				AutomaticChallenge = true
-			});
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AuthenticationScheme = "MyCookieAuthApp",
+                LoginPath = "/auth/login",
+                LogoutPath = "/auth/logout",
+                AccessDeniedPath = "/auth/accessdenied",
+                AutomaticAuthenticate = true,
+                AutomaticChallenge = true,
+                Events = new CookieAuthenticationEvents
+                {
+                    OnValidatePrincipal = MyCookieAuthValidator.ValidateAsync
+                }
+            });
 
-			app.UseMvc(routes =>
+            app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
